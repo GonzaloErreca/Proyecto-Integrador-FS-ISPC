@@ -27,8 +27,8 @@
     <div class="contenedor">
         <!-- Aca va el Contenido -->
         <!-- Nav -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">INSTALLED</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px 10px;">
+            <img src="/Media/0 INSTALLED - LOGO.png" alt="INSTALLED" style="width: 50px;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,18 +42,36 @@
                 </div>
             </div>
         </nav>
+        <!-- Formulario de contacto -->
+        <div class="card">
+            <h3 style="text-align: center;">Contacto</h3>
+            <p style="text-align: center;">¿Tenés alguna inquietud? Dejanos tu consulta</p>
+            <form action="" class="form">
+                <label class="m-2">Email</label>
+                <input type="email" name="email" class="form-control">
+                <label class="m-2">Asunto</label>
+                <input type="text" name="" class="form-control">
+                <label class="m-2">Mensaje</label>
+                <textarea name="" cols="30" rows="10" class="form-control"></textarea>
+            </form>
+        </div>
         <!-- Main -->
-        <div id="main">
-            <div class="card">
-                Producto 1
+        <div id="main" class="col" style="display:flex;justify-content:space-evenly;">
+            <div class="card" style="text-align: center;">
+                <i class='bx bx-phone-call'></i>
+                <p>Télefono</p>
             </div>
-            <div class="card">
-                Producto 2
+            <div class="card" style="text-align: center;">
+                <i class='bx bx-map'></i>
+                <p>Ubicación</p>
             </div>
-            <div class="card">
-                Producto 3
+            <div class="card" style="text-align: center;">
+                <i class='bx bx-time'></i>
+                <p>Horarios</p>
             </div>
         </div>
+        <!-- Zona de google maps -->
+        <div id="map"></div>
         <!-- Footer -->
         <footer id="footer">
             <!-- contacto -->
@@ -89,6 +107,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <!-- Google maps -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

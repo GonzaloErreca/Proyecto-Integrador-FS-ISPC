@@ -7,6 +7,12 @@ body {
   padding: 10px;
 }
 
+/* Mapa de google */
+#map {
+	height: 500px;
+	width: 100%;
+}
+
 /* Footer */
 
 footer {
