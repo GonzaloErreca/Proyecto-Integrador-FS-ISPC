@@ -26,3 +26,8 @@
   background-color: #f1f1f1;
   border-radius: 12px;
 }
+
+/*color de los links */
+.nav-link {
+  color: #000;
+}
