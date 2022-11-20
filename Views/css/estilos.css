@@ -1,0 +1,33 @@
+/*----------------------ESTILOS DE PRODUCTOS Y SERVICIOS----------------------*/
+.estilos-card {
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.estilos-img {
+  width: 100px;
+}
+
+.estilos-card-servicios {
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.estilos-footer-card {
+  background-color: transparent;
+  border: none;
+}
+
+.estilos-fondo {
+  height: 350px;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+}
+
+/*color de los links */
+.nav-link {
+  color: #000;
+}
