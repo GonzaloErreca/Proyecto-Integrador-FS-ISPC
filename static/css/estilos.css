@@ -1,0 +1,135 @@
+.card-descripcion {
+    border-radius: 80px 0px 80px;
+  }
+  .container-img-descripcion {
+    padding: 25px;
+  }
+  .card-descripcion img {
+    border-radius: 10px;
+  }
+  
+  .nav-link {
+    color: #000;
+  }
+  
+  .efecto {
+    transition: all 300ms;
+  }
+  .efecto:hover {
+    border: 1px solid rgba(0, 217, 255, 0.863);
+    transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.658);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75);
+  
+    color: #fff;
+  }
+  
+  .contacto {
+    color: #fff;
+    text-align: center;
+  }
+  .social {
+    color: #fff;
+    text-align: center;
+  }
+  .social i {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 20px;
+    transition: all 300ms;
+  }
+  .social .fa-facebook-f:hover {
+    color: #17a9fd;
+  }
+  
+  .social .fa-instagram:hover {
+    color: #e1306c;
+  }
+  
+  .social .fa-tiktok:hover {
+    color: #ee1d52;
+  }
+  
+  .social .fa-whatsapp:hover {
+    color: #25d366;
+  }
+  
+  .descripcion {
+    background: url(../img/banner2.jpg);
+    opacity: 0.9;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .descripcion h2 {
+    text-decoration: underline;
+  }
+  
+  .descripcion p {
+    color: #fff;
+  }
+  .bg-oscuro {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+  }
+  
+  .card-mapa {
+    border: none;
+  }
+  footer {
+    height: auto;
+  }
+  
+  .footer {
+    background-color: #555;
+    color: #dde5ed;
+    padding: 5px;
+    font-family: "Varela Round", sans-serif;
+  }
+  
+  .logo-footer {
+    height: 140px;
+    transition: ease-in-out 0.4s;
+  }
+  
+  .logo-footer:hover {
+    height: 147px;
+  }
+  
+  ul li {
+    list-style: none;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .flex-container > ul {
+    margin: 10px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .container-socialMedia a {
+    color: #dde5ed;
+  }
+  
+  .container-socialMedia a:hover {
+    color: #38c4e7;
+  }
+  
