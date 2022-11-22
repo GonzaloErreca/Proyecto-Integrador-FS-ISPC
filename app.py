@@ -227,3 +227,40 @@ def create():
 
     return render_template('crud/create.html', marcas = marcas, familias = familias)
 
+# Guardar los datos del crud
+# txtNombre - txtPrecio - txtFoto
+
+@app.route('/store', methods=['POST'])
+@login_required
+def storage():
+
+    # Guardar en variables los datos del form
+    _nombre = request.form['txtNombre']
+    _descripcion = request.form['txtDescripcion']
+    _precio = request.form['txtPrecio']
+    _stock = request.form['txtStock']
+    _foto = request.files['txtFoto']
+    _marca = request.form['txtMarca']
+    _familia = request.form['txtFamilia'] 
+
+    # Validaciones
+
+    if _nombre == '' or _descripcion == '' or _precio == '' or _stock == '' or _foto == '' or _marca == '' or _familia == '':
+        flash('recuerda llenar los datos de los campos')
+        return redirect(url_for('create'))
+
+    # Guardar fotos en la carpeta uploads
+
+    now = datetime.now()
+    tiempo = now.strftime("%Y%H%M%S")
+
+    if _foto.filename != '' :
+        nuevoNombreFoto = tiempo + _foto.filename
+        _foto.save("img//" + nuevoNombreFoto)
+
+    # Consulta de insertar
+    cur = db.connection.cursor()
+    cur.execute("INSERT INTO `productos` (`id`, `nombre`, `descripcion`,`precio`,`stock`,`foto`,`marca_id`, `familia_id`) VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)", (_nombre, _descripcion, _precio, _stock, nuevoNombreFoto, _marca,_familia))
+    db.connection.commit()
+
+    return redirect('/home')
