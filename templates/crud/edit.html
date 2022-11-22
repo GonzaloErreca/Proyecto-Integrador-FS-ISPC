@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Editar</title>
+</head>
+
+<body>
+
+
+{% for producto in productos %}
+<div class="card">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    </div>
+
+    {% endif %}
+
+    {% endwith %}
+    <form class="form-control" method="POST" action="/update" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="card-header">
+            <h2 class="m-2">Actualizar producto:</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="txtID">ID:</label>
+                <input class="form-control" type="text" name="txtID" id="txtID" value="{{ producto[0]}}">
+            </div>
+            <div class="form-group">
+                <label for="txtNombre">Nombre:</label>
+                <input class="form-control" type="text" name="txtNombre" id="txtNombre" value="{{ producto[1]}}">
+            </div>
+            <div class="form-group">
+                <label for="txtDescripcion">Descripcion:</label>
+                <input class="form-control" type="text" name="txtDescripcion" id="txtDescripcion" value="{{ producto[2]}}">
+            </div>
+            <div class="form-group">
+                <label for="txtMarca">Marca:</label>
+                <select name="txtMarca" id="txtMarca" class="form-select" tabindex="1">
+                    <option value="{{ producto[3]}}" class="form-option">{{ producto[4]}}</option>
+                    {% for marca in marcas %}
+                    <option value="{{ marca[0] }}" class="form-option">{{ marca[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtFamilia">Familia:</label>
+                <select name="txtFamilia" id="txtFamilia" class="form-select" tabindex="1">
+                    <option value="{{ producto[5]}}" class="form-option">{{ producto[6]}}</option>
+                    {% for familia in familias %}
+                    <option value="{{ familia[0] }}" class="form-option">{{ familia[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtPrecio">Precio:</label>
+                <input class="form-control" type="text" name="txtPrecio" id="txtPrecio" value="{{ producto[7]}}">
+            </div>
+            <div class="form-group">
+                <label for="txtStock">Stock:</label>
+                <input class="form-control" type="text" name="txtStock" id="txtStock" value="{{ producto[8]}}">
+            </div>
+            <div class="form-group">
+                <label for="txtFoto">Foto:</label>
+                <img class="img-thumbnail" width="100" src="{{ url_for("uploads",nombreFoto =  producto[9]) }}">
+                <input class="form-control" type="file" name="txtFoto" id="txtFoto" required>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-secondary m-2" href="/home">Cancelar</a>
+                <input class="btn btn-primary m-2" type="submit" value="Actualizar">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endfor %}
+
+</body>
+
+</html>
