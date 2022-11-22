@@ -128,3 +128,57 @@ def destroy(id):
     db.connection.commit()
     return redirect("/home")
    
+   # Editar datos
+
+@app.route('/home/edit/<string:id>', methods = ['GET'])
+@login_required
+def edit(id):
+
+    cursor1 = db.connection.cursor()
+    cursor1.execute("SELECT productos.id,productos.nombre,productos.descripcion,productos.marca_id,marca.marca,productos.familia_id,familia.familia,productos.precio,productos.stock,productos.foto FROM marca JOIN productos ON marca.id = productos.marca_id JOIN familia ON productos.familia_id = familia.id WHERE productos.id = %s", (id))
+
+    cursor2 = db.connection.cursor()
+    cursor2.execute("SELECT * FROM `familia`")
+
+    cursor3 = db.connection.cursor()
+    cursor3.execute("SELECT * FROM `marca`")
+
+    productos = cursor1.fetchall()
+    familias = cursor2.fetchall()
+    marcas = cursor3.fetchall()
+
+    db.connection.commit()
+
+    cursor1.close()
+    cursor2.close()
+    cursor3.close()
+
+    return render_template('crud/edit.html', productos = productos, familias = familias, marcas = marcas)
+
+# Actualizar datos
+
+@app.route('/update', methods=['POST'])
+@login_required
+def update():
+    # Guardar en variables los datos del form
+    _nombre = request.form['txtNombre']
+    _descripcion = request.form['txtDescripcion']
+    _precio = request.form['txtPrecio']
+    _stock = request.form['txtStock']
+    _foto = request.files['txtFoto']
+    _marca = request.form['txtMarca']
+    _familia = request.form['txtFamilia']
+    id = request.form['txtID']
+
+    # Modifico solo nombre y precio
+    cursor = db.connection.cursor()
+    cursor.execute("UPDATE `productos` SET `nombre` = %s,`descripcion` = %s,`precio` = %s,`stock` = %s,`marca_id` = %s,`familia_id` = %s WHERE id = %s;", (_nombre, _descripcion, _precio, _stock, _marca,_familia, id))
+
+    # Traer datos del form
+
+    datos = (_nombre,_descripcion,_precio,_stock,_precio,_marca,_familia,id)
+
+        # Modificar foto para poder actualizarla #
+
+        # Validaciones
+
