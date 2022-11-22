@@ -40,3 +40,51 @@ login_manager_app = LoginManager(app)
 def load_user(id):
     return ModelUser.get_by_id(db, id)
 
+
+# @app.route('/')
+# def index():
+#     return redirect(url_for('login'))
+
+@app.route('/')
+def web():
+    return render_template('web/index.html')
+
+@app.route('/Acerca-de')
+def acerca():
+    return render_template('web/acercaDe.html')
+
+@app.route('/productos-y-servicios')
+def productos():
+    cursor = db.connection.cursor()
+    cursor.execute("SELECT productos.id,productos.foto,productos.nombre,productos.descripcion,marca.marca,familia.familia,productos.precio,productos.stock FROM marca JOIN productos ON marca.id = productos.marca_id JOIN familia ON productos.familia_id = familia.id")
+    productos = cursor.fetchall()
+    db.connection.commit()
+    cursor.close()
+    return render_template('web/productosServicios.html', productos = productos)
+
+@app.route('/contacto')
+def contacto():
+    return render_template('web/contacto.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        print(request.form['username'])
+        print(request.form['password'])
+        user = User(0, request.form['username'], request.form['password'])
+        logged_user = ModelUser.login(db, user)
+        if logged_user != None:
+            if logged_user.password:
+                login_user(logged_user)
+                return redirect(url_for('home'))
+            else:
+                flash("Contraseña invalida...")
+                return render_template('auth/login.html')
+        else:
+            flash("Usuario no encontrado...")
+            return render_template('auth/login.html')
+    else:
+        return render_template('auth/login.html')
+    
+    
