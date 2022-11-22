@@ -87,4 +87,44 @@ def login():
     else:
         return render_template('auth/login.html')
     
-    
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+# Crud
+
+
+
+# Mostrar datos : Show
+
+@app.route('/home')
+@login_required
+def home():
+    cursor = db.connection.cursor()
+    cursor.execute("SELECT productos.id,productos.foto,productos.nombre,productos.descripcion,marca.marca,familia.familia,productos.precio,productos.stock FROM marca JOIN productos ON marca.id = productos.marca_id JOIN familia ON productos.familia_id = familia.id")
+    productos = cursor.fetchall()
+    db.connection.commit()
+    cursor.close()
+
+    return render_template('crud/index.html',productos = productos)
+
+# Eliminar datos
+
+@app.route('/home/destroy/<string:id>', methods = ['GET'])
+@login_required
+def destroy(id):
+
+    cursor = db.connection.cursor()
+
+    # Borrar foto al eliminar
+
+    cursor.execute("SELECT foto FROM productos WHERE id = %s", (id))
+    fila = cursor.fetchall()
+    os.remove(os.path.join("img/", fila[0][0]))
+    cursor.execute("DELETE FROM productos WHERE id=%s",(id))
+    db.connection.commit()
+    return redirect("/home")
+   
