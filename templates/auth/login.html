@@ -1,0 +1,106 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+<!-- <form class="form-signin" action="/login" method="POST">
+    <img class="mb-4" src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="100" height="60">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+    <br />
+    {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-floating">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
+        <label for="username">Usuario</label>
+    </div>
+    <div class="form-floating mt-2">
+        <input type="password" class="form-control" name="password" placeholder="Contraseña">
+        <label for="password">Contraseña:</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar Sesión</button>
+    <a class="w-100 btn btn-lg btn-primary mt-2" href="/">Volver</a>
+</form> -->
+
+
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="my-5 display-3 fw-bold ls-tight">
+                        Installed <br />
+                        <span class="text-primary">Tienda de iluminación</span>
+                    </h1>
+                    <p style="color: hsl(217, 10%, 50.8%)">
+                        Iluminamos tus espacios con diseños a medida.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div class="card-body py-5 px-md-5">
+                            <form class="form-signin" action="/login" method="POST">
+                                {% with messages = get_flashed_messages() %}
+
+                                {% if messages %}
+                                <br />
+                                {% for message in messages %}
+                                <div class="alert alert-primary alert-dismissible" role="alert">
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            
+                                {% endwith %}
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="username">Usuario</label>
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Usuario"/>
+
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="password">Contraseña</label>
+                                    <input type="password" id="password" name="password" class="form-control" />
+                                </div>
+
+                                <div class="row">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        Iniciar sesión
+                                    </button>
+                                    <a href="/" class="btn btn-secondary btn-block mb-4">
+                                        Volver
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+{% endblock %}
