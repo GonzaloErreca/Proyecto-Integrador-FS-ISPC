@@ -182,3 +182,48 @@ def update():
 
         # Validaciones
 
+    if _foto == '':
+        flash('recuerda llenar los datos de los campos')
+        return redirect(url_for('edit'))
+
+    now = datetime.now()
+    tiempo = now.strftime("%Y%H%M%S")
+    if _foto.filename != '' :
+        nuevoNombreFoto = tiempo + _foto.filename
+        _foto.save("img/" + nuevoNombreFoto)
+
+    # Traer esa foto
+
+    cursor.execute("SELECT foto FROM productos WHERE id = %s", id)
+    fila = cursor.fetchall()
+
+    # Remover la foto
+
+    os.remove(os.path.join('img/', fila[0][0]))
+
+    # actualizar con nueva foto
+    cursor.execute("UPDATE productos SET foto = %s WHERE id = %s", (nuevoNombreFoto, id))
+
+    # Ejecutar actualizacion completa de datos
+    db.connection.commit()
+    
+    return redirect('/home')
+
+# Crear datos del CRUD
+
+@app.route('/home/create')
+@login_required
+
+def create():
+    cursor1 = db.connection.cursor()
+    cursor1.execute("SELECT * FROM `marca`")
+    cursor2 = db.connection.cursor()
+    cursor2.execute("SELECT * FROM `familia`")
+    marcas = cursor1.fetchall()
+    familias = cursor2.fetchall()
+    db.connection.commit()
+    cursor1.close()
+    cursor2.close()
+
+    return render_template('crud/create.html', marcas = marcas, familias = familias)
+
