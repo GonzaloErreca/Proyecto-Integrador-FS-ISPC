@@ -53,7 +53,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/productos-y-servicios"
-                        >Productos y Servicios</a
+                        >Productos</a
                       >
                     </li>
                     <li class="nav-item">
@@ -81,7 +81,7 @@
               <h3 class="text-center">Contacto</h3>
             </div>
             <div class="mb-2">
-              <form method="post" action="">
+              <form method="post" id="form">
                 <div class="mb-2">
                   <label for="nombre">Nombre</label>
                   <input
@@ -90,6 +90,7 @@
                     name="nombre"
                     id="nombre"
                     placeholder="Sebastian"
+                    required
                   />
                 </div>
                 <div class="mb-2">
@@ -100,6 +101,7 @@
                     name="asunto"
                     id="asunto"
                     placeholder="Ej. Automatizacion"
+                    required
                   />
                 </div>
                 <div class="mb-2">
@@ -108,8 +110,9 @@
                     class="form-control"
                     type="email"
                     name="email"
-                    id="nombre"
+                    id="email"
                     placeholder="Ejemplo@gmail.com"
+                    required
                   />
                 </div>
 
@@ -119,11 +122,13 @@
                     class="form-control"
                     name="mensaje"
                     id="mensaje"
+                    required
                   ></textarea>
                 </div>
 
                 <div class="mb-2">
                   <input class="btn btn-primary form-control" type="submit" />
+                  <p class="msjAdvertencia" id="msjAdvertencia"></p>
                 </div>
               </form>
             </div>
