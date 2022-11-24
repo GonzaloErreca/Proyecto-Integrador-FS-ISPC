@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2022 a las 14:27:56
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Tiempo de generación: 22-11-2022 a las 03:44:36
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -150,15 +149,6 @@ CREATE TABLE `productos` (
   `familia_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `foto`, `marca_id`, `familia_id`) VALUES
-(1, 'Foco', 'LED', 200.00, 50, '20222329132022122640focos.jpg', 4, 6),
-(2, 'Cables', 'de cobre', 300.00, 12, '20222331582022200716cables.jpg', 2, 11),
-(3, 'Tomacorriente', 'Blanco', 150.00, 18, '20222333012022214148enchufe.jpg', 3, 12);
-
 -- --------------------------------------------------------
 
 --
@@ -229,7 +219,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
